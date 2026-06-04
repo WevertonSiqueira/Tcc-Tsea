@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from models import Chapas
+from models import Chapas, Lote
 from datetime import datetime
 from dotenv import load_dotenv
 import os
@@ -34,18 +34,33 @@ def registrar_chapas():
 
     return jsonify({'message': 'Chapa registrada com sucesso'}), 201
 
+@app.route('/registrar/Lote', methods=['POST'])
+def registrar_lote():
+    data = request.get_json()
+    novoLote = Lote(
+        id = data['id'],
+        chapas_quantidade = data['chapas_quantidade'],
+        peso_total = data['peso_total'],
+        data_emissao = datetime.now(),
+        data_termino = None
+    )
+
+    db.session.add(novoLote)
+    db.session.commit()
+
+    return jsonify({'message': 'Lote registrado com sucesso'}), 201
+
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
 
-    # Aqui você pode adicionar a lógica para verificar as credenciais do usuário
     if username == 'admin' and password == 'password':
         return jsonify({'message': 'Login successful', 'token': 'fake-jwt-token'})
     else:
         return jsonify({'message': 'Invalid credentials'}), 401
-    
+        
 @app.route('/', methods=['GET'])
 def home():
     return "API Running on port: " + os.getenv('PORT')
