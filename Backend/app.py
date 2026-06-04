@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from models import Chapas
+from datetime import datetime
 from dotenv import load_dotenv
 import os
 import json
@@ -13,15 +15,34 @@ CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 db = SQLAlchemy(app)
 
+@app.route('/registrar/Chapas', methods=['POST'])
+def registrar_chapas():
+    data = request.get_json()
+    novaChapa = Chapas(
+        id_lote = data['id_lote'],
+        id_setor = data['id_setor'],
+        peso = data['peso'],
+        altura = data['altura'],
+        material = data['material'],
+        espessura = data['espessura'],
+        data_entrada = datetime.now(),
+        data_saida = None
+    )
+
+    db.session.add(novaChapa)
+    db.session.commit()
+
+    return jsonify({'message': 'Chapa registrada com sucesso'}), 201
+
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
 
-    # For demonstration, we will use hardcoded credentials
+    # Aqui você pode adicionar a lógica para verificar as credenciais do usuário
     if username == 'admin' and password == 'password':
-        return jsonify({'message': 'Login successful'}), 200
+        return jsonify({'message': 'Login successful', 'token': 'fake-jwt-token'})
     else:
         return jsonify({'message': 'Invalid credentials'}), 401
     

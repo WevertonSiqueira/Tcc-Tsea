@@ -1,11 +1,11 @@
 import qrcode
 import os
 
-codigo = "PECA-00125"
+codigo = "youtube.com"
 
 qr = qrcode.make(codigo)
 
-caminho = os.path.abspath("peca00125.png")
+caminho = os.path.abspath("peca00126.png")
 
 qr.save(caminho)
 
