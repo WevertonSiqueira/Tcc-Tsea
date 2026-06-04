@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Importação do Chart.js via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Vinculação correta do seu arquivo de script (deve vir DEPOIS do Chart.js) -->
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="#">Visão Geral</a></li>
+                <li><a href="#">Análises</a></li>
+                <li><a href="#">Configurações</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+
+            <header>
+                <h1>Dashboard Geral</h1>
+            </header>
+
+            <section class="cards">
+                <div class="card">
+                    <h3>Total de Lotes</h3>
+                    <p>120</p>
+                </div>
+
+                <div class="card">
+                    <h3>Peso Produzido</h3>
+                    <p>2.500 kg</p>
+                </div>
+
+                <div class="card">
+                    <h3>Produção Hoje</h3>
+                    <p>35 lotes</p>
+                </div>
+            </section>
+
+            <!-- Seção do Gráfico -->
+            <section class="grafico">
+                <canvas id="graficoLotes"></canvas>
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>
