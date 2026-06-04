@@ -27,7 +27,7 @@ def login():
     
 @app.route('/', methods=['GET'])
 def home():
-    return "Ts is running le'go 🖥️🔥🔥🔥"
+    return "API Running on port: " + os.getenv('PORT')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
