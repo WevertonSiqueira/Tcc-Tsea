@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
 import json
 from flask_cors import CORS
+from database import db
 
 load_dotenv()
 
@@ -11,7 +11,11 @@ app = Flask(__name__)
 CORS(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
-db = SQLAlchemy(app)
+db.init_app(app)
+
+# register lotes blueprint
+from lotes import lotes_bp
+app.register_blueprint(lotes_bp, url_prefix='/api')
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -30,4 +34,7 @@ def home():
     return "Ts is running le'go "
 
 if __name__ == '__main__':
+    # ensure database tables exist
+    with app.app_context():
+        db.create_all()
     app.run(host='0.0.0.0', port=5000, debug=True)

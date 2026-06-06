@@ -111,6 +111,14 @@ body {
     max-height: 340px;
 }
 
+/* filter controls sizing moved from inline styles */
+.filter-controls select#filterStatus {
+    width: 180px;
+}
+.filter-controls select#pageSize {
+    width: 100px;
+}
+
 .login-page {
     display: flex;
     justify-content: center;
@@ -155,10 +163,10 @@ h1 {
 
 button {
     width: 100%;
-    padding: 12px;
+    padding: 18px;
     background-color: #0056b3;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     color: white;
     font-size: 16px;
     cursor: pointer;

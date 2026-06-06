@@ -11,8 +11,8 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-SUPABASE_URL = os.getenv("SUPABASE_URL", "")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY", "")
+SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL=https://pzhqfstwfyrdqunkxtmd.supabase.co", "")
+SUPABASE_KEY = os.getenv("NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_znLRqcc4Ws05VuBnUWGSYw_gqvEyoQN", "")
 
 if not SUPABASE_URL or not SUPABASE_KEY:
     raise RuntimeError("SUPABASE_URL e SUPABASE_KEY devem estar configurados no arquivo .env")
