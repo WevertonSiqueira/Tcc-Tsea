@@ -6,81 +6,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <div class="dashboard-container">
         <aside class="sidebar">
             <h2>Menu</h2>
-            <ul>
-                <li><a href="visao-geral.html">Visão Geral</a></li>
-                <li><a href="Analises.html">Análises</a></li>
-                <li><a href="Configuracao.html">Configurações</a></li>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link text-white" href="visao-geral.html">Visão Geral</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="Analises.html">Análises</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="Configuracao.html">Configurações</a></li>
             </ul>
         </aside>
 
         <main class="main-content">
-            <header class="dashboard-header">
+            <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
                     <h1>Dashboard Geral</h1>
                     <p class="subtitle">Visão geral dos lotes, produção e desempenho</p>
                 </div>
-            </header>
+                <button id="btn-sair" class="btn btn-outline-light btn-sm text-dark">Sair</button>
+            </div>
 
-            <section class="cards">
-                <div class="dashboard-card">
-                    <h3>Total de Lotes</h3>
-                    <p>90</p>
+            <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                    <div class="dashboard-card">
+                        <h3>Total de Lotes</h3>
+                        <p>90</p>
+                    </div>
                 </div>
-                <div class="dashboard-card">
-                    <h3>Peso Produzido</h3>
-                    <p>2.500 kg</p>
+                <div class="col-md-4">
+                    <div class="dashboard-card">
+                        <h3>Peso Produzido</h3>
+                        <p>2.500 kg</p>
+                    </div>
                 </div>
-                <div class="dashboard-card">
-                    <h3>Produção Hoje</h3>
-                    <p>35 lotes</p>
+                <div class="col-md-4">
+                    <div class="dashboard-card">
+                        <h3>Produção Hoje</h3>
+                        <p>35 lotes</p>
+                    </div>
                 </div>
-            </section>
+            </div>
 
-            <section class="chart-container">
+            <div class="chart-container">
                 <div class="chart-header">
                     <h2>Produção por Lote</h2>
                 </div>
                 <canvas id="graficoLotes"></canvas>
-            </section>
+            </div>
         </main>
     </div>
 
-    <script>
-        const ctx = document.getElementById('graficoLotes');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Lote #1', 'Lote #2', 'Lote #3', 'Lote #4', 'Lote #5', 'Lote #6'],
-                datasets: [{
-                    label: 'Produção (kg)',
-                    data: [1200, 950, 780, 1100, 900, 1050],
-                    backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b', '#858796'],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            callback: value => value + ' kg'
-                        }
-                    }
-                }
-            }
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

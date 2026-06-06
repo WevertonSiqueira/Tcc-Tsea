@@ -177,3 +177,25 @@ button:hover {
     color: #007bff;
     text-decoration: none;
 }
+
+.login-page {
+    background: linear-gradient(135deg, #eef2f7 0%, #dfe7f3 100%);
+}
+
+.login-card {
+    border-radius: 1.25rem;
+    overflow: hidden;
+}
+
+.login-card .card-body {
+    background: #ffffff;
+}
+
+.login-page .card {
+    border: none;
+}
+
+.login-page .form-control:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.1rem rgba(78, 115, 223, 0.25);
+}
