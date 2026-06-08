@@ -1,0 +1,301 @@
+/* Custom Dashboard Enhancements */
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.dashboard-card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Spinner customizado */
+.spinner-border-sm {
+    width: 0.9rem;
+    height: 0.9rem;
+    border-width: 0.2em;
+}
+
+/* Status do lote com cores diferentes */
+.status-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-pendente .status-indicator {
+    background-color: #f6c23e;
+}
+
+.status-pronto .status-indicator {
+    background-color: #1cc88a;
+}
+
+.status-em_producao .status-indicator {
+    background-color: #36b9cc;
+}
+
+.status-desconhecido .status-indicator {
+    background-color: #858796;
+}
+
+/* Card hover effect */
+.dashboard-card:hover {
+    box-shadow: 0 20px 50px rgba(44, 62, 80, 0.12);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* Tabela row hover */
+.table tbody tr:hover {
+    background-color: #f8f9fc;
+    transition: background-color 0.2s ease;
+}
+
+/* Modal fade-in */
+.modal.fade .modal-dialog {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading state */
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Chart container improvements */
+.chart-container {
+    transition: all 0.3s ease;
+}
+
+.chart-container:hover {
+    box-shadow: 0 20px 50px rgba(44, 62, 80, 0.12);
+}
+
+/* Badge animations */
+.badge {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Sidebar link active indicator */
+.sidebar .nav-link.active {
+    animation: slideRight 0.3s ease-out;
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Form improvements */
+.form-control:focus,
+.form-select:focus {
+    animation: glow 0.3s ease-out;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 0 0 rgba(78, 115, 223, 0.3);
+    }
+    to {
+        box-shadow: 0 0 0 4px rgba(78, 115, 223, 0.1);
+    }
+}
+
+/* Button loading state */
+.btn.loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 2px solid #333;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Empty state */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+    color: #65748b;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #d1d3d8;
+}
+
+.empty-state p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+/* Success animation */
+.success-animation {
+    animation: scaleIn 0.5s ease-out;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Filter controls spacing */
+.filter-controls .form-control,
+.filter-controls .form-select {
+    border-radius: 8px;
+}
+
+.filter-controls .form-control:focus,
+.filter-controls .form-select:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 0 4px rgba(78, 115, 223, 0.1);
+}
+
+/* Pagination improvement */
+.pagination {
+    margin-top: 20px;
+}
+
+.page-link {
+    border-radius: 6px;
+    margin: 0 2px;
+}
+
+.page-link:hover {
+    background-color: #e3e6f0;
+    transform: translateY(-2px);
+}
+
+/* Icon styles */
+i.bi {
+    margin-right: 4px;
+    vertical-align: -0.125em;
+}
+
+/* Responsive improvements for mobile */
+@media (max-width: 576px) {
+    .dashboard-card {
+        margin-bottom: 15px;
+    }
+    
+    .btn-sm {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.8125rem;
+    }
+    
+    .table {
+        font-size: 0.875rem;
+    }
+    
+    .filter-controls {
+        gap: 8px;
+    }
+    
+    .modal-body {
+        padding: 16px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .sidebar,
+    .btn,
+    .pagination,
+    .filter-controls {
+        display: none;
+    }
+    
+    .main-content {
+        padding: 0;
+        max-width: 100%;
+    }
+    
+    .table {
+        font-size: 10px;
+    }
+}
+
+/* Accessibility */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+    outline: 2px solid #4e73df;
+    outline-offset: 2px;
+}
+
+/* Keyboard navigation */
+*:focus-visible {
+    outline: 2px solid #4e73df;
+    outline-offset: 2px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
